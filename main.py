@@ -33,14 +33,15 @@ BASE_DIR = Path(__file__).parent
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 
-SITE_NAME = "暖居采暖"
-SITE_DESC = "福泉采暖地暖一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理"
+SITE_NAME = "福泉美佳精工暖通有限公司"
+SITE_DESC = "福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理"
 
 SITE_CONTACT = {
     "phones": ["13595498010", "15286280516"],
     "wechat": "微信同号",
     "address": "贵州省黔南州福泉市麒龙美家居10号楼大厅39号门面",
     "douyin": "福泉市林内供暖设备销售店",
+    "company": "福泉美佳精工暖通有限公司",
 }
 
 
