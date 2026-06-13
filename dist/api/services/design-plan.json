@@ -1,0 +1,44 @@
+{
+  "service": {
+    "id": "svc-001",
+    "type": "service",
+    "name": "装修效果图与方案设计",
+    "category": "设计",
+    "price": 2000.0,
+    "price_unit": "/套",
+    "currency": "CNY",
+    "area": "贵州省黔南州福泉市",
+    "description": "提供装修效果图+完整装修方案，含采暖系统布局设计，¥2,000/套",
+    "availability": "available",
+    "keywords": [
+      "效果图",
+      "装修方案",
+      "设计",
+      "采暖布局",
+      "装修设计"
+    ],
+    "content": "## 装修效果图与方案设计\n\n专业出效果图 + 装修方案，让你的家先看后装。\n\n### 交付内容\n- **3D 效果图**：客厅、卧室、厨房等主要空间\n- **平面布局图**：家具尺寸标注、动线规划\n- **采暖系统图**：盘管布局、分集水器位置、主机定位\n- **水电点位图**：开关、插座、给排水定位\n- **材料清单**：主材+辅材用量估算\n\n### 流程\n1. 上门量房（精确到 1cm）\n2. 需求沟通（风格、预算、功能需求）\n3. 方案设计（3-5 个工作日）\n4. 效果图交付 + 方案讲解\n5. 可免费修改 1 次",
+    "slug": "design-plan"
+  },
+  "schema_org": {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "装修效果图与方案设计",
+    "description": "提供装修效果图+完整装修方案，含采暖系统布局设计，¥2,000/套",
+    "serviceType": "设计",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "装修效果图与方案设计"
+    },
+    "areaServed": [
+      "贵州省黔南州福泉市"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "2000.0",
+      "priceCurrency": "CNY",
+      "unitText": "/套"
+    },
+    "keywords": "效果图, 装修方案, 设计, 采暖布局, 装修设计"
+  }
+}
