@@ -1,0 +1,17 @@
+{
+  "buildCommand": "pip install python-frontmatter pydantic markdown jinja2 && python build.py",
+  "outputDirectory": "dist",
+  "installCommand": "pip install python-frontmatter pydantic markdown jinja2",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/products", "destination": "/products/index.html" },
+    { "source": "/products/:id", "destination": "/products/:id.html" },
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/services/:id", "destination": "/services/:id.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/search", "destination": "/search.html" },
+    { "source": "/api/catalog.json", "destination": "/api/catalog.json" }
+  ]
+}

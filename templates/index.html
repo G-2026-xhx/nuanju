@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ site_name }} — AI-First 数字服务{% endblock %}
+{% block content %}
+<h1>{{ site_name }}</h1>
+<p>{{ site_desc }}</p>
+
+<h2>🛍️ 产品 ({{ products|length }})</h2>
+{% for p in products %}
+<div class="item">
+    <strong><a href="/products/{{ p.slug or p.id }}">{{ p.name }}</a></strong>
+    <span class="price">¥{{ "%.0f"|format(p.price) }}</span>
+    <div class="meta">{{ p.category }} | {{ p.description[:80] }}{% if p.description|length > 80 %}...{% endif %}</div>
+    {% for k in p.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
+</div>
+{% endfor %}
+
+<h2>🔧 服务 ({{ services|length }})</h2>
+{% for s in services %}
+<div class="item">
+    <strong><a href="/services/{{ s.slug or s.id }}">{{ s.name }}</a></strong>
+    <span class="price">¥{{ "%.0f"|format(s.price) }}{{ s.price_unit }}</span>
+    <div class="meta">{{ s.category }}{% if s.area %} | 📍 {{ s.area }}{% endif %} | {{ s.description[:80] }}{% if s.description|length > 80 %}...{% endif %}</div>
+    {% for k in s.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
+</div>
+{% endfor %}
+
+{% endblock %}

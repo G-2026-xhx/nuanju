@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ service.name }} — {{ site_name }}{% endblock %}
+{% block content %}
+<script type="application/ld+json">{{ schema_org | safe }}</script>
+
+<h1>{{ service.name }}</h1>
+<div class="meta">
+    <span class="price">¥{{ "%.2f"|format(service.price) }}{{ service.price_unit }}</span> |
+    {{ service.category }} |
+    {% if service.area %}📍 {{ service.area }} |{% endif %}
+    {{ service.availability }}
+</div>
+<div style="margin: 10px 0;">
+    {% for k in service.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
+</div>
+<p><strong>{{ service.description }}</strong></p>
+<hr>
+{{ service.content | safe }}
+<hr>
+<p><a href="/services">&larr; 所有服务</a></p>
+{% endblock %}

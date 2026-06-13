@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}搜索: {{ query }} — {{ site_name }}{% endblock %}
+{% block content %}
+<h1>搜索: "{{ query }}"</h1>
+<p>找到 {{ results|length }} 个结果</p>
+{% for r in results %}
+<div class="item">
+    <strong><a href="{{ r.url }}">{{ r.name }}</a></strong>
+    <span class="price">¥{{ "%.0f"|format(r.price) }}</span>
+    <span class="meta">| {{ r.type }} | {{ r.category }}</span>
+    <p>{{ r.description }}</p>
+</div>
+{% endfor %}
+{% if not results %}
+<p>没有找到匹配的内容。试试其他关键词。</p>
+{% endif %}
+<p><a href="/">&larr; 首页</a></p>
+{% endblock %}

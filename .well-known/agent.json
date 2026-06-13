@@ -1,0 +1,38 @@
+{
+    "name": "AI数字服务",
+    "description": "面向 AI 时代的技术服务商 — 企业 AI 转型、数据服务、网站建设",
+    "url": "http://localhost:8000",
+    "version": "1.0.0",
+    "capabilities": {
+        "streaming": false,
+        "pushNotifications": false
+    },
+    "skills": [
+        {
+            "id": "search_products",
+            "name": "Search Products",
+            "description": "Search products by keyword, category, or price range",
+            "tags": ["product", "search", "catalog"]
+        },
+        {
+            "id": "search_services",
+            "name": "Search Services",
+            "description": "Search local services by keyword, category, or area",
+            "tags": ["service", "search", "local"]
+        },
+        {
+            "id": "full_catalog",
+            "name": "Full Catalog",
+            "description": "Get complete product and service catalog as JSON",
+            "tags": ["catalog", "all", "json"]
+        }
+    ],
+    "defaultInputModes": ["text", "application/json"],
+    "defaultOutputModes": ["application/json", "text/plain"],
+    "authentication": null,
+    "protocols": {
+        "a2a": "/.well-known/agent.json",
+        "mcp": "/mcp",
+        "rest": "/api/catalog.json"
+    }
+}

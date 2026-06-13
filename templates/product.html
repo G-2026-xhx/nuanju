@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name }} — {{ site_name }}{% endblock %}
+{% block content %}
+<script type="application/ld+json">{{ schema_org | safe }}</script>
+
+<h1>{{ product.name }}</h1>
+<div class="meta">
+    <span class="price">¥{{ "%.2f"|format(product.price) }}</span> |
+    {{ product.category }} |
+    {% if product.location %}📍 {{ product.location }} |{% endif %}
+    {{ product.availability }}
+</div>
+<div style="margin: 10px 0;">
+    {% for k in product.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
+</div>
+<p><strong>{{ product.description }}</strong></p>
+<hr>
+{{ product.content | safe }}
+<hr>
+<p><a href="/products">&larr; 所有产品</a></p>
+{% endblock %}

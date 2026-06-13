@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}服务列表 — {{ site_name }}{% endblock %}
+{% block content %}
+<h1>服务列表</h1>
+{% if query %}<p>搜索: <strong>{{ query }}</strong></p>{% endif %}
+{% if category %}<p>分类: <strong>{{ category }}</strong></p>{% endif %}
+{% if not services %}
+<p>没有找到服务。</p>
+{% else %}
+{% for s in services %}
+<div class="item">
+    <strong><a href="/services/{{ s.slug or s.id }}">{{ s.name }}</a></strong>
+    <span class="price">¥{{ "%.0f"|format(s.price) }}{{ s.price_unit }}</span>
+    <div class="meta">{{ s.category }}{% if s.area %} | 📍 {{ s.area }}{% endif %} | {{ s.description }}</div>
+    {% for k in s.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
+</div>
+{% endfor %}
+{% endif %}
+<p><a href="/">&larr; 首页</a></p>
+{% endblock %}
