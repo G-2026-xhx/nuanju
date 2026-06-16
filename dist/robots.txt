@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /api/
-Allow: /api/catalog.json
-
-Sitemap: /api/catalog.json

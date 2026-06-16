@@ -8,7 +8,7 @@
 - Availability: InStock
 - Location: 贵州省黔南州福泉市
 - Keywords: 地暖, 水地暖, 盘管, 采暖, 地暖铺设
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/products/floor-heating
+- URL: https://g-2026-xhx.github.io/nuanju/products/floor-heating
 
 ## 地暖铺设
 
@@ -32,7 +32,7 @@
 - Availability: InStock
 - Location: 贵州省黔南州福泉市
 - Keywords: 纽恩泰, 空气能, 二联供, 地暖, 中央空调, 一拖6, 100平
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/products/new-energy-2in1-package
+- URL: https://g-2026-xhx.github.io/nuanju/products/new-energy-2in1-package
 
 ## 纽恩泰空气能地暖空调二联供
 
@@ -59,7 +59,7 @@
 - Availability: InStock
 - Location: 贵州省黔南州福泉市
 - Keywords: 纽恩泰, 空气能, 地暖套餐, 空气源热泵, 100平, 节能
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/products/new-energy-air-package
+- URL: https://g-2026-xhx.github.io/nuanju/products/new-energy-air-package
 
 ## 纽恩泰空气能地暖套餐
 
@@ -84,7 +84,7 @@
 - Availability: InStock
 - Location: 贵州省黔南州福泉市
 - Keywords: 林内, 空气能, 地暖套餐, 高端采暖, 100平
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/products/rinnai-air-package
+- URL: https://g-2026-xhx.github.io/nuanju/products/rinnai-air-package
 
 ## 林内空气能地暖套餐
 
@@ -108,7 +108,7 @@
 - Availability: InStock
 - Location: 贵州省黔南州福泉市
 - Keywords: 林内, 壁挂炉, 地暖套餐, 燃气采暖, 100平
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/products/rinnai-boiler-package
+- URL: https://g-2026-xhx.github.io/nuanju/products/rinnai-boiler-package
 
 ## 林内壁挂炉地暖套餐
 
@@ -131,7 +131,7 @@
 - Availability: InStock
 - Location: 贵州省黔南州福泉市
 - Keywords: 林内, 双能源, 三联供, 壁挂炉, 空气能, 地暖, 中央空调, 热水器, 100平, 顶配
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/products/rinnai-dual-energy-3in1
+- URL: https://g-2026-xhx.github.io/nuanju/products/rinnai-dual-energy-3in1
 
 ## 林内壁挂炉+空气能双能源三联供套餐
 
@@ -162,7 +162,7 @@
 - Availability: available
 - Area: 贵州省黔南州福泉市
 - Keywords: 效果图, 装修方案, 设计, 采暖布局, 装修设计
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/services/design-plan
+- URL: https://g-2026-xhx.github.io/nuanju/services/design-plan
 
 ## 装修效果图与方案设计
 
@@ -189,7 +189,7 @@
 - Availability: available
 - Area: 贵州省黔南州福泉市
 - Keywords: 装修监理, 监工, 质量验收, 节点验收, 第三方监理
-- URL: https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju/services/inspection
+- URL: https://g-2026-xhx.github.io/nuanju/services/inspection
 
 ## 装修监理服务
 
