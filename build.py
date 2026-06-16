@@ -26,7 +26,7 @@ CONTENT = ROOT / "content"
 
 SITE_NAME = "福泉美佳精工暖通有限公司"
 SITE_DESC = "福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理"
-BASE_URL = "https://fuquan-meijia-precision-hvac_0.gitee.io/nuanju"  # 部署后改成你的域名
+BASE_URL = "https://g-2026-xhx.github.io/nuanju"  # GitHub Pages
 
 SITE_CONTACT = {
     "phones": ["13595498010", "15286280516"],
@@ -83,6 +83,8 @@ def build():
     render_html("index.html", {
         "site_name": SITE_NAME,
         "site_desc": SITE_DESC,
+        "contact": SITE_CONTACT,
+        "base_url": BASE_URL,
         "products": products,
         "services": services,
     }, "index.html")
@@ -91,6 +93,8 @@ def build():
     render_html("products.html", {
         "site_name": SITE_NAME,
         "site_desc": SITE_DESC,
+        "contact": SITE_CONTACT,
+        "base_url": BASE_URL,
         "products": products,
         "category": None,
         "query": None,
@@ -101,6 +105,8 @@ def build():
         render_html("product.html", {
             "site_name": SITE_NAME,
             "site_desc": SITE_DESC,
+            "contact": SITE_CONTACT,
+            "base_url": BASE_URL,
             "product": p,
             "schema_org": json.dumps(p.schema_org(), ensure_ascii=False),
         }, f"products/{p.slug or p.id}.html")
@@ -109,6 +115,8 @@ def build():
     render_html("services.html", {
         "site_name": SITE_NAME,
         "site_desc": SITE_DESC,
+        "contact": SITE_CONTACT,
+        "base_url": BASE_URL,
         "services": services,
         "category": None,
         "query": None,
@@ -119,6 +127,8 @@ def build():
         render_html("service.html", {
             "site_name": SITE_NAME,
             "site_desc": SITE_DESC,
+            "contact": SITE_CONTACT,
+            "base_url": BASE_URL,
             "service": s,
             "schema_org": json.dumps(s.schema_org(), ensure_ascii=False),
         }, f"services/{s.slug or s.id}.html")
@@ -132,6 +142,8 @@ def build():
         render_html("page.html", {
             "site_name": SITE_NAME,
             "site_desc": SITE_DESC,
+            "contact": SITE_CONTACT,
+            "base_url": BASE_URL,
             "title": page["title"],
             "description": page["description"],
             "content": markdown(page["content"], output_format="html"),
@@ -210,6 +222,8 @@ def build():
     render_html("page.html", {
         "site_name": SITE_NAME,
         "site_desc": SITE_DESC,
+        "contact": SITE_CONTACT,
+        "base_url": BASE_URL,
         "title": "404 — 页面不存在",
         "description": "",
         "content": "<p>页面不存在。<a href='/'>回首页</a></p>",
@@ -265,6 +279,8 @@ document.getElementById('q').addEventListener('input', function() {
     html = tmpl.render(
         site_name=SITE_NAME,
         site_desc=SITE_DESC,
+        contact=SITE_CONTACT,
+        base_url=BASE_URL,
         title="搜索",
         description="搜索全部产品和服务",
         content=search_js,
