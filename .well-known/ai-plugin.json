@@ -1,12 +1,12 @@
 {
   "schema_version": "v1",
-  "name_for_human": "福泉美佳精工暖通",
+  "name_for_human": "福泉暖通助手",
   "name_for_model": "nuanju_hvac",
-  "description_for_human": "福泉采暖地暖中央空调一站式服务，查询产品报价、服务方案、联系方式。",
+  "description_for_human": "福泉采暖地暖中央空调一站式服务查询",
   "description_for_model": "帮助用户查询采暖、地暖、中央空调、装修监理等产品和服务。服务范围仅限贵州省福泉市。",
   "auth": {"type": "none"},
-  "api": {"type": "openapi", "url": "https://g-2026-xhx.github.io/nuanju/.well-known/openapi.yaml"},
-  "logo_url": "https://g-2026-xhx.github.io/nuanju/favicon.ico",
+  "api": {"type": "openapi", "url": "./openapi.yaml"},
+  "logo_url": "https://g-2026-xhx.github.io/nuanju/logo.png",
   "contact_email": "13595498010@163.com",
-  "legal_info_url": "https://g-2026-xhx.github.io/nuanju/about"
+  "legal_info_url": "https://g-2026-xhx.github.io/nuanju"
 }
