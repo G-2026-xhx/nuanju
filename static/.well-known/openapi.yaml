@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: 福泉美佳精工暖通 API
+  description: 查询采暖产品、服务、报价
+  version: 1.0.0
+servers:
+  - url: https://g-2026-xhx.github.io/nuanju
+paths:
+  /api/catalog.json:
+    get:
+      operationId: getCatalog
+      summary: 获取全部产品和服务目录
+      responses: {'200': {'description': '成功'}}
+  /api/products.json:
+    get:
+      operationId: getProducts
+      summary: 获取产品列表
+      responses: {'200': {'description': '成功'}}
+  /api/services.json:
+    get:
+      operationId: getServices
+      summary: 获取服务列表
+      responses: {'200': {'description': '成功'}}
+  /api/search-index.json:
+    get:
+      operationId: searchIndex
+      summary: 搜索索引
+      responses: {'200': {'description': '成功'}}
