@@ -217,6 +217,14 @@ def build():
     if (STATIC / "robots.txt").exists():
         shutil.copy(STATIC / "robots.txt", DIST / "robots.txt")
         print(f"  COPY → robots.txt")
+    # 复制 .well-known/ 下的所有文件(ai-plugin.json, openapi.yaml 等)
+    wellknown_src = STATIC / ".well-known"
+    wellknown_dst = DIST / ".well-known"
+    if wellknown_src.exists():
+        wellknown_dst.mkdir(parents=True, exist_ok=True)
+        for f in wellknown_src.iterdir():
+            shutil.copy(f, wellknown_dst / f.name)
+            print(f"  COPY → .well-known/{f.name}")
 
     # 404 页面
     render_html("page.html", {
