@@ -1,0 +1,38 @@
+{
+  "product": {
+    "id": "prod-002",
+    "type": "product",
+    "name": "林内壁挂炉地暖套餐",
+    "category": "采暖套餐",
+    "price": 16800.0,
+    "currency": "CNY",
+    "description": "100平采暖面积，林内燃气壁挂炉+全屋地暖盘管，包干价¥16,800",
+    "location": "贵州省黔南州福泉市",
+    "availability": "InStock",
+    "image": null,
+    "keywords": [
+      "林内",
+      "壁挂炉",
+      "地暖套餐",
+      "燃气采暖",
+      "100平"
+    ],
+    "content": "## 林内壁挂炉地暖套餐\n\n适合 100㎡ 以内采暖面积，一价全包。\n\n### 套餐配置\n- **林内燃气壁挂炉** ×1（24KW，采暖+生活热水两用）\n- **地暖盘管系统**：含主管道、地面盘管、分集水器、保温层\n- **全包安装**：壁挂炉安装调试 + 地暖铺设 + 打压验收\n\n### 适合人群\n- 有天然气接入的小区\n- 采暖面积 100㎡ 以内\n- 需要生活热水的家庭",
+    "slug": "rinnai-boiler-package"
+  },
+  "schema_org": {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "林内壁挂炉地暖套餐",
+    "description": "100平采暖面积，林内燃气壁挂炉+全屋地暖盘管，包干价¥16,800",
+    "sku": "prod-002",
+    "offers": {
+      "@type": "Offer",
+      "price": "16800.0",
+      "priceCurrency": "CNY",
+      "availability": "https://schema.org/InStock"
+    },
+    "category": "采暖套餐",
+    "keywords": "林内, 壁挂炉, 地暖套餐, 燃气采暖, 100平"
+  }
+}

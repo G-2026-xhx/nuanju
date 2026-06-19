@@ -1,0 +1,78 @@
+{
+  "name": "福泉美佳精工暖通有限公司",
+  "description": "福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理",
+  "url": "https://g-2026-xhx.github.io/nuanju",
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "skills": [
+    {
+      "id": "search_products",
+      "name": "Search Products",
+      "description": "Search products by keyword, category via search-index.json",
+      "tags": [
+        "product",
+        "search",
+        "catalog"
+      ],
+      "examples": [
+        "GET https://g-2026-xhx.github.io/nuanju/api/products.json"
+      ]
+    },
+    {
+      "id": "search_services",
+      "name": "Search Services",
+      "description": "Search local services by keyword, category, area",
+      "tags": [
+        "service",
+        "search",
+        "local"
+      ],
+      "examples": [
+        "GET https://g-2026-xhx.github.io/nuanju/api/services.json"
+      ]
+    },
+    {
+      "id": "full_catalog",
+      "name": "Full Catalog",
+      "description": "Get complete product and service catalog as JSON",
+      "tags": [
+        "catalog",
+        "all",
+        "json"
+      ],
+      "examples": [
+        "GET https://g-2026-xhx.github.io/nuanju/api/catalog.json"
+      ]
+    },
+    {
+      "id": "search_index",
+      "name": "Search Index",
+      "description": "Full text search index of all products and services",
+      "tags": [
+        "search",
+        "index",
+        "json"
+      ],
+      "examples": [
+        "GET https://g-2026-xhx.github.io/nuanju/api/search-index.json"
+      ]
+    }
+  ],
+  "defaultInputModes": [
+    "text",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "authentication": null,
+  "protocols": {
+    "a2a": "https://g-2026-xhx.github.io/nuanju/.well-known/agent.json",
+    "mcp": "https://g-2026-xhx.github.io/nuanju/mcp",
+    "rest": "https://g-2026-xhx.github.io/nuanju/api/catalog.json"
+  }
+}
