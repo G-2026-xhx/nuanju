@@ -11,16 +11,16 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 import urllib.request
 import urllib.parse
 
-SITEMAP_URL = "https://g-2026-xhx.github.io/nuanju/sitemap.xml"
-SITE_URL = "https://g-2026-xhx.github.io/nuanju"
+SITEMAP_URL = "https://fqnuantong.com/sitemap.xml"
+SITE_URL = "https://fqnuantong.com"
 
 # ⚠️ 去百度站长平台 https://ziyuan.baidu.com/ 获取你的 token 后填入
 BAIDU_API_TOKEN = ""
-BAIDU_SITE = "https://g-2026-xhx.github.io"
+BAIDU_SITE = "https://fqnuantong.com"
 
 # ⚠️ 去 Bing Webmaster https://www.bing.com/webmasters 获取 API Key
 INDEXNOW_KEY = ""
-INDEXNOW_KEY_LOCATION = "https://g-2026-xhx.github.io/nuanju/{key}.txt"
+INDEXNOW_KEY_LOCATION = "https://fqnuantong.com/nuanju/{key}.txt"
 
 
 def ping_google():
@@ -77,7 +77,7 @@ def ping_indexnow():
 
     import json
     data = json.dumps({
-        "host": "g-2026-xhx.github.io",
+        "host": "fqnuantong.com",
         "key": INDEXNOW_KEY,
         "keyLocation": INDEXNOW_KEY_LOCATION.format(key=INDEXNOW_KEY),
         "urlList": urls,
@@ -103,7 +103,7 @@ def print_baidu_guide():
 ║  1. 打开 https://ziyuan.baidu.com/                       ║
 ║  2. 点击「立即注册」，用手机号注册                        ║
 ║  3. 登录后点击「添加站点」                                ║
-║  4. 站点域名填写: g-2026-xhx.github.io                   ║
+║  4. 站点域名填写: fqnuantong.com                   ║
 ║     ⚠️ 选「站点域名」类型，不要选「网站域名」             ║
 ║  5. 验证方式选「HTML标签验证」                            ║
 ║     → 复制那行 <meta name="baidu-site-verification"...    ║
@@ -125,7 +125,7 @@ def print_google_guide():
 ║  1. 打开 https://search.google.com/search-console        ║
 ║  2. 用 Google 账号登录（没有就注册一个）                  ║
 ║  3. 点击「添加资源」选「网址前缀」                        ║
-║  4. 输入: https://g-2026-xhx.github.io/nuanju/           ║
+║  4. 输入: https://fqnuantong.com/nuanju/           ║
 ║  5. 验证方式选「HTML标记」                                ║
 ║     → 复制 <meta name="google-site-verification"...       ║
 ║     → 把 content="..." 里面的值告诉我                     ║
@@ -145,7 +145,7 @@ def print_bing_guide():
 ║  1. 打开 https://www.bing.com/webmasters                 ║
 ║  2. 用 Microsoft 账号登录                                 ║
 ║  3. 点击「添加网站」                                      ║
-║  4. 输入: https://g-2026-xhx.github.io/nuanju/           ║
+║  4. 输入: https://fqnuantong.com/nuanju/           ║
 ║  5. 验证方式选「Meta Tag」                                ║
 ║     → 把 content 值告诉我                                 ║
 ║  6. 验证通过后 → 左侧「站点地图」→ 提交 sitemap.xml       ║

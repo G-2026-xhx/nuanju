@@ -26,7 +26,7 @@ CONTENT = ROOT / "content"
 
 SITE_NAME = "福泉美佳精工暖通有限公司"
 SITE_DESC = "福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理"
-BASE_URL = "https://g-2026-xhx.github.io/nuanju"  # GitHub Pages
+BASE_URL = "https://fqnuantong.com"  # 独立域名
 
 # ── 统计分析 ID（注册后填入，用于站点验证和流量分析）──
 BAIDU_TONGJI_ID = ""     # 百度统计: https://tongji.baidu.com/ 注册获取
@@ -224,6 +224,9 @@ def build():
     build_sitemap(products, services)
 
     # ==================== 11. 静态文件 ====================
+    if (STATIC / "CNAME").exists():
+        shutil.copy(STATIC / "CNAME", DIST / "CNAME")
+        print(f"  COPY → CNAME")
     if (STATIC / "robots.txt").exists():
         shutil.copy(STATIC / "robots.txt", DIST / "robots.txt")
         print(f"  COPY → robots.txt")
