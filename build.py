@@ -213,7 +213,10 @@ def build():
     build_agent_json()
     build_mcp()
 
-    # ==================== 10. 静态文件 ====================
+    # ==================== 10. Sitemap ====================
+    build_sitemap(products, services)
+
+    # ==================== 11. 静态文件 ====================
     if (STATIC / "robots.txt").exists():
         shutil.copy(STATIC / "robots.txt", DIST / "robots.txt")
         print(f"  COPY → robots.txt")
@@ -423,6 +426,78 @@ def build_agent_json():
             "rest": f"{BASE_URL}/api/catalog.json",
         },
     }, ".well-known/agent.json")
+
+
+def build_sitemap(products, services):
+    """Generate sitemap.xml for search engines."""
+    now = datetime.now().strftime("%Y-%m-%d")
+    urls = []
+
+    # 首页 — 最高优先级
+    urls.append(f"""  <url>
+    <loc>{BASE_URL}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>""")
+
+    # 列表页
+    urls.append(f"""  <url>
+    <loc>{BASE_URL}/products/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>""")
+    urls.append(f"""  <url>
+    <loc>{BASE_URL}/services/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>""")
+
+    # 产品详情页
+    for p in products:
+        slug = p.slug or p.id
+        urls.append(f"""  <url>
+    <loc>{BASE_URL}/products/{slug}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>""")
+
+    # 服务详情页
+    for s in services:
+        slug = s.slug or s.id
+        urls.append(f"""  <url>
+    <loc>{BASE_URL}/services/{slug}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>""")
+
+    # 关于页
+    urls.append(f"""  <url>
+    <loc>{BASE_URL}/about/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>""")
+
+    # 搜索页
+    urls.append(f"""  <url>
+    <loc>{BASE_URL}/search/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>""")
+
+    sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
+{chr(10).join(urls)}
+</urlset>"""
+    write_text(sitemap, "sitemap.xml")
+    print(f"  XML → sitemap.xml ({len(urls)} URLs)")
 
 
 def build_mcp():

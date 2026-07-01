@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block title %}{{ title }} — {{ site_name }}{% endblock %}
 {% block content %}
+<div class="breadcrumb">
+    <a href="/">首页</a> &raquo; {{ title }}
+</div>
+
 <h1>{{ title }}</h1>
 {{ content | safe }}
-<p><a href="/">&larr; 首页</a></p>
+<p><a href="/">&larr; 回首页</a></p>
 {% endblock %}

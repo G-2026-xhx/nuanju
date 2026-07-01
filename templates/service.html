@@ -1,21 +1,61 @@
 {% extends "base.html" %}
-{% block title %}{{ service.name }} — {{ site_name }}{% endblock %}
-{% block content %}
+{% block title %}{{ service.name }} — {{ service.category }} | 福泉暖通 {{ site_name }}{% endblock %}
+{% block description %}{{ service.description }} — 福泉美佳精工暖通，{{ service.category }}服务，{{ service.area }}专业团队，电话13595498010。{% endblock %}
+{% block canonical %}{{ base_url }}/services/{{ service.slug or service.id }}/{% endblock %}
+
+{% block schema_org %}
+{{ super() }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首页",
+      "item": "{{ base_url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "服务列表",
+      "item": "{{ base_url }}/services/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ service.name }}",
+      "item": "{{ base_url }}/services/{{ service.slug or service.id }}/"
+    }
+  ]
+}
+</script>
 <script type="application/ld+json">{{ schema_org | safe }}</script>
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+    <a href="/">首页</a> &raquo; <a href="/services/">服务</a> &raquo; {{ service.name }}
+</div>
 
 <h1>{{ service.name }}</h1>
 <div class="meta">
-    <span class="price">¥{{ "%.2f"|format(service.price) }}{{ service.price_unit }}</span> |
-    {{ service.category }} |
-    {% if service.area %}📍 {{ service.area }} |{% endif %}
-    {{ service.availability }}
+    <span class="price">¥{{ "%.0f"|format(service.price) }}{{ service.price_unit }}</span>
+    | {{ service.category }}
+    {% if service.area %} | 📍 {{ service.area }}{% endif %}
+    | {{ service.availability }}
 </div>
-<div style="margin: 10px 0;">
-    {% for k in service.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
-</div>
+
 <p><strong>{{ service.description }}</strong></p>
-<hr>
-{{ service.content | safe }}
-<hr>
-<p><a href="/services">&larr; 所有服务</a></p>
+
+{{ service.content | markdown }}
+
+<p style="margin-top:20px;">
+    <a href="tel:13595498010" class="cta-button">📞 预约服务：13595498010</a>
+</p>
+
+{% for k in service.keywords %}
+<span class="keyword">{{ k }}</span>
+{% endfor %}
 {% endblock %}

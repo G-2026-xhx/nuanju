@@ -1,27 +1,102 @@
 {% extends "base.html" %}
-{% block title %}{{ site_name }} — AI-First 数字服务{% endblock %}
+{% block title %}福泉地暖_福泉暖通_地暖空调二联供三联供 | {{ site_name }}{% endblock %}
+{% block description %}福泉美佳精工暖通 — 福泉本地专业暖通公司，主营地暖铺设、中央空调、空气能二联供、三联供系统、林内壁挂炉、纽恩泰空气能。福泉市麒龙美家居10号楼39号门面，电话13595498010。{% endblock %}
+{% block canonical %}{{ base_url }}/{% endblock %}
+{% block og_type %}website{% endblock %}
+
+{% block schema_org %}
+{{ super() }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "福泉哪里可以装地暖？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "福泉美佳精工暖通提供专业地暖安装服务，门店在福泉市麒龙美家居10号楼39号门面。地暖铺设¥120/平方，含主管道+盘管+分集水器+安装。电话13595498010，免费上门量房设计。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "二联供和三联供有什么区别？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "二联供是空气能热泵同时提供地暖+中央空调，一套系统解决冬天供暖和夏天制冷。三联供在二联供基础上增加生活热水功能，实现地暖+空调+热水三合一。二联供套餐¥46,800起，三联供套餐¥66,800起，具体价格根据户型面积定制。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "空气能采暖和壁挂炉采暖哪个好？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "空气能采暖运行费用比壁挂炉省50%-70%，适合有安装条件的家庭。壁挂炉初装成本低（¥16,800起），升温快，适合小户型或已通燃气的房屋。福泉美佳暖通提供林内壁挂炉和纽恩泰空气能两种方案，免费上门勘测后推荐最优方案。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "福泉暖通公司哪家好？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "福泉美佳精工暖通有限公司是福泉本地专业暖通公司，经营林内壁挂炉、纽恩泰空气能等品牌，提供地暖、中央空调、二联供、三联供一站式服务。门店地址：福泉市麒龙美家居10号楼大厅39号门面，电话13595498010。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "装一套地暖大概多少钱？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "地暖价格取决于方案：①纯地暖铺设¥120/平方；②壁挂炉+地暖套餐¥16,800起（100平采暖面积）；③空气能+地暖套餐¥26,800起；④二联供（地暖+中央空调）¥46,800起；⑤三联供（地暖+空调+热水）¥66,800起。以上均为包干价，含安装材料。"
+      }
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <h1>{{ site_name }}</h1>
-<p>{{ site_desc }}</p>
+<p style="font-size:1.1em;color:#555;">{{ site_desc }}</p>
 
-<h2>🛍️ 产品 ({{ products|length }})</h2>
+<div style="background:#f8f9fa;border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin:20px 0;">
+    <h2 style="margin-top:0;">🔥 热门服务</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;">
+        <span class="keyword" style="font-size:1em;padding:6px 14px;">地暖铺设 ¥120/㎡</span>
+        <span class="keyword" style="font-size:1em;padding:6px 14px;">壁挂炉套餐 ¥16,800</span>
+        <span class="keyword" style="font-size:1em;padding:6px 14px;">空气能地暖 ¥26,800</span>
+        <span class="keyword" style="font-size:1em;padding:6px 14px;">二联供 ¥46,800</span>
+        <span class="keyword" style="font-size:1em;padding:6px 14px;">三联供 ¥66,800</span>
+        <span class="keyword" style="font-size:1em;padding:6px 14px;">中央空调 ¥20,000起</span>
+    </div>
+    <p style="margin-top:15px;"><a href="tel:13595498010" class="cta-button">📞 立即咨询：13595498010</a></p>
+</div>
+
+<h2>📦 采暖产品 ({{ products|length }})</h2>
 {% for p in products %}
 <div class="item">
-    <strong><a href="/products/{{ p.slug or p.id }}">{{ p.name }}</a></strong>
+    <strong><a href="/products/{{ p.slug or p.id }}/">{{ p.name }}</a></strong>
     <span class="price">¥{{ "%.0f"|format(p.price) }}</span>
     <div class="meta">{{ p.category }} | {{ p.description[:80] }}{% if p.description|length > 80 %}...{% endif %}</div>
     {% for k in p.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
 </div>
 {% endfor %}
 
-<h2>🔧 服务 ({{ services|length }})</h2>
+<h2>🔧 暖通服务 ({{ services|length }})</h2>
 {% for s in services %}
 <div class="item">
-    <strong><a href="/services/{{ s.slug or s.id }}">{{ s.name }}</a></strong>
+    <strong><a href="/services/{{ s.slug or s.id }}/">{{ s.name }}</a></strong>
     <span class="price">¥{{ "%.0f"|format(s.price) }}{{ s.price_unit }}</span>
     <div class="meta">{{ s.category }}{% if s.area %} | 📍 {{ s.area }}{% endif %} | {{ s.description[:80] }}{% if s.description|length > 80 %}...{% endif %}</div>
     {% for k in s.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
 </div>
 {% endfor %}
+
+<div style="background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:20px;margin:30px 0;">
+    <h3 style="margin-top:0;">📍 服务区域</h3>
+    <p>福泉市、都匀市、凯里市、瓮安县、贵定县、麻江县及周边地区，免费上门量房设计！</p>
+    <p style="margin-bottom:0;"><strong>🏢 门店地址：</strong>贵州省黔南州福泉市麒龙美家居10号楼大厅39号门面</p>
+</div>
 
 {% endblock %}

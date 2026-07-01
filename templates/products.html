@@ -1,20 +1,28 @@
 {% extends "base.html" %}
-{% block title %}产品列表 — {{ site_name }}{% endblock %}
+{% block title %}采暖产品_暖通设备_地暖空调 | {{ site_name }}{% endblock %}
+{% block description %}福泉美佳精工暖通产品列表 — 地暖铺设、林内壁挂炉套餐、纽恩泰空气能地暖、二联供系统、三联供系统、中央空调，福泉本地安装服务。{% endblock %}
+{% block canonical %}{{ base_url }}/products/{% endblock %}
+
 {% block content %}
-<h1>产品列表</h1>
-{% if query %}<p>搜索: <strong>{{ query }}</strong></p>{% endif %}
+<div class="breadcrumb">
+    <a href="/">首页</a> &raquo; 产品列表
+</div>
+
+<h1>📦 暖通产品</h1>
+<p>共 {{ products|length }} 款采暖/暖通产品，涵盖地暖、壁挂炉、空气能热泵、二联供、三联供、中央空调</p>
 {% if category %}<p>分类: <strong>{{ category }}</strong></p>{% endif %}
-{% if not products %}
-<p>没有找到产品。</p>
-{% else %}
+{% if query %}<p>搜索: <strong>{{ query }}</strong></p>{% endif %}
+
 {% for p in products %}
 <div class="item">
-    <strong><a href="/products/{{ p.slug or p.id }}">{{ p.name }}</a></strong>
+    <strong><a href="/products/{{ p.slug or p.id }}/">{{ p.name }}</a></strong>
     <span class="price">¥{{ "%.0f"|format(p.price) }}</span>
-    <div class="meta">{{ p.category }}{% if p.location %} | 📍 {{ p.location }}{% endif %} | {{ p.description }}</div>
+    <div class="meta">{{ p.category }}{% if p.location %} | 📍 {{ p.location }}{% endif %} | {{ p.description[:100] }}{% if p.description|length > 100 %}...{% endif %}</div>
     {% for k in p.keywords %}<span class="keyword">{{ k }}</span>{% endfor %}
 </div>
 {% endfor %}
+
+{% if not products %}
+<p>暂无产品</p>
 {% endif %}
-<p><a href="/">&larr; 首页</a></p>
 {% endblock %}
