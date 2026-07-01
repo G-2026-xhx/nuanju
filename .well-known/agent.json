@@ -1,7 +1,7 @@
 {
   "name": "福泉美佳精工暖通有限公司",
   "description": "福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理",
-  "url": "https://g-2026-xhx.github.io/nuanju",
+  "url": "https://fqnuantong.com",
   "version": "1.0.0",
   "capabilities": {
     "streaming": false,
@@ -18,7 +18,7 @@
         "catalog"
       ],
       "examples": [
-        "GET https://g-2026-xhx.github.io/nuanju/api/products.json"
+        "GET https://fqnuantong.com/api/products.json"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "local"
       ],
       "examples": [
-        "GET https://g-2026-xhx.github.io/nuanju/api/services.json"
+        "GET https://fqnuantong.com/api/services.json"
       ]
     },
     {
@@ -44,7 +44,7 @@
         "json"
       ],
       "examples": [
-        "GET https://g-2026-xhx.github.io/nuanju/api/catalog.json"
+        "GET https://fqnuantong.com/api/catalog.json"
       ]
     },
     {
@@ -57,7 +57,7 @@
         "json"
       ],
       "examples": [
-        "GET https://g-2026-xhx.github.io/nuanju/api/search-index.json"
+        "GET https://fqnuantong.com/api/search-index.json"
       ]
     }
   ],
@@ -71,8 +71,8 @@
   ],
   "authentication": null,
   "protocols": {
-    "a2a": "https://g-2026-xhx.github.io/nuanju/.well-known/agent.json",
-    "mcp": "https://g-2026-xhx.github.io/nuanju/mcp",
-    "rest": "https://g-2026-xhx.github.io/nuanju/api/catalog.json"
+    "a2a": "https://fqnuantong.com/.well-known/agent.json",
+    "mcp": "https://fqnuantong.com/mcp",
+    "rest": "https://fqnuantong.com/api/catalog.json"
   }
 }

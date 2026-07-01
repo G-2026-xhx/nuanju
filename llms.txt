@@ -2,28 +2,28 @@
 > 福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理
 
 ## About
-- [福泉美佳精工暖通有限公司](https://g-2026-xhx.github.io/nuanju/): 福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理
-- [About](https://g-2026-xhx.github.io/nuanju/about): 关于我们
+- [福泉美佳精工暖通有限公司](https://fqnuantong.com/): 福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理
+- [About](https://fqnuantong.com/about): 关于我们
 
 ## Products (6 items)
 ### 采暖
-- [地暖](https://g-2026-xhx.github.io/nuanju/products/floor-heating): 水地暖盘管铺设，包干价¥120/平方，含主管道+盘管+分集水器+安装，不含壁挂炉 — ¥120.0 | 采暖
+- [地暖](https://fqnuantong.com/products/floor-heating): 水地暖盘管铺设，包干价¥120/平方，含主管道+盘管+分集水器+安装，不含壁挂炉 — ¥120.0 | 采暖
 ### 采暖套餐
-- [纽恩泰空气能地暖空调二联供套餐](https://g-2026-xhx.github.io/nuanju/products/new-energy-2in1-package): 100平采暖面积+一拖6中央空调，纽恩泰空气能二联供，包干价¥46,800 — ¥46800.0 | 采暖套餐
-- [纽恩泰空气能地暖套餐](https://g-2026-xhx.github.io/nuanju/products/new-energy-air-package): 100平采暖面积，纽恩泰空气能热泵+全屋地暖，包干价¥26,800 — ¥26800.0 | 采暖套餐
-- [林内空气能地暖套餐](https://g-2026-xhx.github.io/nuanju/products/rinnai-air-package): 100平采暖面积，林内空气能热泵+全屋地暖，包干价¥36,800 — ¥36800.0 | 采暖套餐
-- [林内壁挂炉地暖套餐](https://g-2026-xhx.github.io/nuanju/products/rinnai-boiler-package): 100平采暖面积，林内燃气壁挂炉+全屋地暖盘管，包干价¥16,800 — ¥16800.0 | 采暖套餐
-- [林内壁挂炉+空气能双能源地暖空调三联供套餐](https://g-2026-xhx.github.io/nuanju/products/rinnai-dual-energy-3in1): 100平采暖面积+一拖6中央空调+24KW热水器，林内双能源三联供，包干价¥66,800 — ¥66800.0 | 采暖套餐
+- [纽恩泰空气能地暖空调二联供套餐](https://fqnuantong.com/products/new-energy-2in1-package): 100平采暖面积+一拖6中央空调，纽恩泰空气能二联供，包干价¥46,800 — ¥46800.0 | 采暖套餐
+- [纽恩泰空气能地暖套餐](https://fqnuantong.com/products/new-energy-air-package): 100平采暖面积，纽恩泰空气能热泵+全屋地暖，包干价¥26,800 — ¥26800.0 | 采暖套餐
+- [林内空气能地暖套餐](https://fqnuantong.com/products/rinnai-air-package): 100平采暖面积，林内空气能热泵+全屋地暖，包干价¥36,800 — ¥36800.0 | 采暖套餐
+- [林内壁挂炉地暖套餐](https://fqnuantong.com/products/rinnai-boiler-package): 100平采暖面积，林内燃气壁挂炉+全屋地暖盘管，包干价¥16,800 — ¥16800.0 | 采暖套餐
+- [林内壁挂炉+空气能双能源地暖空调三联供套餐](https://fqnuantong.com/products/rinnai-dual-energy-3in1): 100平采暖面积+一拖6中央空调+24KW热水器，林内双能源三联供，包干价¥66,800 — ¥66800.0 | 采暖套餐
 
 ## Services (2 items)
 ### 监理
-- [装修监理](https://g-2026-xhx.github.io/nuanju/services/inspection): 第三方装修监理，建筑面积140㎡以内，¥4,800/套，帮你盯工地、把质量关 — ¥4800.0/套 | 监理 | 区域: 贵州省黔南州福泉市
+- [装修监理](https://fqnuantong.com/services/inspection): 第三方装修监理，建筑面积140㎡以内，¥4,800/套，帮你盯工地、把质量关 — ¥4800.0/套 | 监理 | 区域: 贵州省黔南州福泉市
 ### 设计
-- [装修效果图与方案设计](https://g-2026-xhx.github.io/nuanju/services/design-plan): 提供装修效果图+完整装修方案，含采暖系统布局设计，¥2,000/套 — ¥2000.0/套 | 设计 | 区域: 贵州省黔南州福泉市
+- [装修效果图与方案设计](https://fqnuantong.com/services/design-plan): 提供装修效果图+完整装修方案，含采暖系统布局设计，¥2,000/套 — ¥2000.0/套 | 设计 | 区域: 贵州省黔南州福泉市
 
 ## API
-- [Full Catalog](https://g-2026-xhx.github.io/nuanju/api/catalog.json): Complete product/service data in JSON
-- [Search Index](https://g-2026-xhx.github.io/nuanju/api/search-index.json): All searchable items
+- [Full Catalog](https://fqnuantong.com/api/catalog.json): Complete product/service data in JSON
+- [Search Index](https://fqnuantong.com/api/search-index.json): All searchable items
 
 ## Contact
 - Phone: 13595498010 / 15286280516 (微信同号)
@@ -31,5 +31,5 @@
 - Douyin: 福泉市林内供暖设备销售店
 
 ## Agent Protocols
-- [agent.json](https://g-2026-xhx.github.io/nuanju/.well-known/agent.json): Agent capability declaration (A2A)
-- [MCP](https://g-2026-xhx.github.io/nuanju/mcp): Model Context Protocol endpoint
+- [agent.json](https://fqnuantong.com/.well-known/agent.json): Agent capability declaration (A2A)
+- [MCP](https://fqnuantong.com/mcp): Model Context Protocol endpoint
