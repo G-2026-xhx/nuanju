@@ -28,6 +28,10 @@ SITE_NAME = "福泉美佳精工暖通有限公司"
 SITE_DESC = "福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理"
 BASE_URL = "https://g-2026-xhx.github.io/nuanju"  # GitHub Pages
 
+# ── 统计分析 ID（注册后填入，用于站点验证和流量分析）──
+BAIDU_TONGJI_ID = ""     # 百度统计: https://tongji.baidu.com/ 注册获取
+GOOGLE_ANALYTICS_ID = "" # Google Analytics: https://analytics.google.com/ 注册获取
+
 SITE_CONTACT = {
     "phones": ["13595498010", "15286280516"],
     "wechat": "微信同号",
@@ -43,6 +47,9 @@ env.filters["markdown"] = lambda text: markdown(text, output_format="html")
 
 def render_html(template: str, context: dict, path: str):
     """Render Jinja2 → write to dist/path."""
+    # 注入追踪 ID 到所有页面
+    context.setdefault("baidu_tongji_id", BAIDU_TONGJI_ID)
+    context.setdefault("google_analytics_id", GOOGLE_ANALYTICS_ID)
     tmpl = env.get_template(template)
     html = tmpl.render(**context)
     out = DIST / path

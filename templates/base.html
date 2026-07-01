@@ -243,6 +243,30 @@
         <p style="font-size:0.75em;">🤖 AI-first site: <a href="/llms.txt">llms.txt</a> | <a href="/api/catalog.json">catalog.json</a> | <a href="/.well-known/agent.json">agent.json</a> | <a href="/mcp">MCP</a></p>
     </footer>
 
+    {# ── 百度统计 ── #}
+    {% if baidu_tongji_id %}
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?{{ baidu_tongji_id }}";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    {% endif %}
+
+    {# ── Google Analytics ── #}
+    {% if google_analytics_id %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ google_analytics_id }}"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ google_analytics_id }}');
+    </script>
+    {% endif %}
+
     {# ── 百度自动推送 JS ── #}
     <script>
     (function(){
