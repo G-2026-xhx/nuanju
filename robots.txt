@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Allow: /api/catalog.json
 
-Sitemap: /api/catalog.json
+Sitemap: https://g-2026-xhx.github.io/nuanju/sitemap.xml
