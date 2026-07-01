@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ article.title }} | 福泉暖通 {{ site_name }}{% endblock %}
+{% block description %}{{ article.description }}{% endblock %}
+{% block canonical %}{{ base_url }}/articles/{{ article.slug }}.html{% endblock %}
+
+{% block schema_org %}
+{{ super() }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ article.title }}",
+  "description": "{{ article.description }}",
+  "datePublished": "{{ article.date }}",
+  "author": {
+    "@type": "Organization",
+    "name": "{{ contact.company }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ contact.company }}"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+    <a href="/">首页</a> &raquo; <a href="/articles/">文章</a> &raquo; {{ article.title[:30] }}...
+</div>
+
+<h1>{{ article.title }}</h1>
+<div class="meta">{{ article.date }}</div>
+
+{{ content | safe }}
+
+<p style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+    <a href="/articles/">&larr; 返回文章列表</a>
+</p>
+{% endblock %}

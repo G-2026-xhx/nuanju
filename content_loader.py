@@ -12,7 +12,6 @@ CONTENT_DIR = Path(__file__).parent / "content"
 def _parse_frontmatter(raw: dict, body: str, slug: str) -> dict:
     """Parse raw frontmatter dict, handling comma-separated string fields."""
     result = dict(raw)
-    # Parse keywords: can be list in YAML or comma-separated string
     if "keywords" in result:
         if isinstance(result["keywords"], str):
             result["keywords"] = [k.strip() for k in result["keywords"].split(",") if k.strip()]
@@ -55,6 +54,24 @@ def load_services() -> list[Service]:
         data["type"] = "service"
         services.append(Service(**data))
     return services
+
+
+def load_articles() -> list[dict]:
+    """Load all articles from content/articles/*.md."""
+    articles = []
+    articles_dir = CONTENT_DIR / "articles"
+    if not articles_dir.exists():
+        return articles
+    for fpath in sorted(articles_dir.glob("*.md")):
+        post = frontmatter.load(fpath)
+        slug = fpath.stem
+        data = _parse_frontmatter(post.metadata, post.content, slug)
+        data["slug"] = slug
+        data["title"] = data.get("title", slug)
+        data["description"] = data.get("description", "")
+        data["date"] = data.get("date", "")
+        articles.append(data)
+    return articles
 
 
 def load_page(slug: str) -> Optional[dict]:

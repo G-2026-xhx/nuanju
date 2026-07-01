@@ -15,7 +15,7 @@ from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 from markdown import markdown
 
-from content_loader import load_products, load_services, load_page, get_all_categories
+from content_loader import load_products, load_services, load_page, load_articles, get_all_categories
 from models import Product, Service, SearchResult
 
 ROOT = Path(__file__).parent
@@ -143,6 +143,30 @@ def build():
     # ==================== 6. 搜索页（客户端 JS 搜索） ====================
     build_search_page(products, services)
 
+    # ==================== 6.5. 文章页 ====================
+    articles = load_articles()
+    # 文章列表页
+    render_html("articles.html", {
+        "site_name": SITE_NAME,
+        "site_desc": SITE_DESC,
+        "contact": SITE_CONTACT,
+        "base_url": BASE_URL,
+        "articles": articles,
+    }, "articles/index.html")
+    # 文章详情页
+    for a in articles:
+        render_html("article.html", {
+            "site_name": SITE_NAME,
+            "site_desc": SITE_DESC,
+            "contact": SITE_CONTACT,
+            "base_url": BASE_URL,
+            "title": a["title"],
+            "description": a["description"],
+            "article": a,
+            "content": markdown(a["content"], output_format="html"),
+            "keywords": a.get("keywords", []),
+        }, f"articles/{a['slug']}.html")
+
     # ==================== 7. 关于页 ====================
     page = load_page("about")
     if page:
@@ -215,13 +239,13 @@ def build():
     }, "api/search-index.json")
 
     # ==================== 9. AI 协议层 ====================
-    build_llms_txt(products, services, categories)
-    build_llms_full(products, services)
+    build_llms_txt(products, services, categories, articles)
+    build_llms_full(products, services, articles)
     build_agent_json()
     build_mcp()
 
     # ==================== 10. Sitemap ====================
-    build_sitemap(products, services)
+    build_sitemap(products, services, articles)
 
     # ==================== 11. 静态文件 ====================
     if (STATIC / "CNAME").exists():
@@ -311,7 +335,7 @@ document.getElementById('q').addEventListener('input', function() {
     print(f"  HTML → search.html (client-side search)")
 
 
-def build_llms_txt(products, services, categories):
+def build_llms_txt(products, services, categories, articles=None):
     """生成 llms.txt — AI 网站索引标准."""
     lines = [
         f"# {SITE_NAME}",
@@ -341,6 +365,13 @@ def build_llms_txt(products, services, categories):
                 lines.append(f"- [{s.name}]({BASE_URL}/services/{slug}): {s.description} — ¥{s.price}{s.price_unit} | {s.category}{area}")
     lines.append("")
 
+    # 文章
+    if articles:
+        lines.append(f"## Articles ({len(articles)} items)")
+        for a in articles:
+            lines.append(f"- [{a['title']}]({BASE_URL}/articles/{a['slug']}.html): {a['description']}")
+        lines.append("")
+
     lines += [
         f"## API",
         f"- [Full Catalog]({BASE_URL}/api/catalog.json): Complete product/service data in JSON",
@@ -358,7 +389,7 @@ def build_llms_txt(products, services, categories):
     write_text("\n".join(lines), "llms.txt")
 
 
-def build_llms_full(products, services):
+def build_llms_full(products, services, articles=None):
     """生成 llms-full.txt — 全量内容，AI 一次性加载."""
     parts = [f"# {SITE_NAME} — Full Catalog", "", "## Products", ""]
     for p in products:
@@ -386,6 +417,19 @@ def build_llms_full(products, services):
             f"- URL: {BASE_URL}/services/{slug}",
             "", s.content, "---", "",
         ]
+
+    # 文章
+    if articles:
+        parts += ["## Articles", ""]
+        for a in articles:
+            parts += [
+                f"### {a['title']}",
+                f"- Date: {a.get('date', '')}",
+                f"- Keywords: {', '.join(a.get('keywords', []))}",
+                f"- URL: {BASE_URL}/articles/{a['slug']}.html",
+                "", a['content'], "---", "",
+            ]
+
     write_text("\n".join(parts), "llms-full.txt")
 
 
@@ -438,7 +482,7 @@ def build_agent_json():
     }, ".well-known/agent.json")
 
 
-def build_sitemap(products, services):
+def build_sitemap(products, services, articles=None):
     """Generate sitemap.xml for search engines."""
     now = datetime.now().strftime("%Y-%m-%d")
     urls = []
@@ -480,6 +524,22 @@ def build_sitemap(products, services):
         slug = s.slug or s.id
         urls.append(f"""  <url>
     <loc>{BASE_URL}/services/{slug}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>""")
+
+    # 文章页
+    if articles:
+        urls.append(f"""  <url>
+    <loc>{BASE_URL}/articles/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>""")
+        for a in articles:
+            urls.append(f"""  <url>
+    <loc>{BASE_URL}/articles/{a['slug']}.html</loc>
     <lastmod>{now}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

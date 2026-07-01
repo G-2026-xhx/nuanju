@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}暖通知识科普_采暖选购指南 | 福泉暖通 {{ site_name }}{% endblock %}
+{% block description %}福泉美佳精工暖通科普文章 — 地暖选购、二联供三联供对比、空气能节能分析、暖通避坑指南、福泉暖通公司推荐。{% endblock %}
+{% block canonical %}{{ base_url }}/articles/{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+    <a href="/">首页</a> &raquo; 文章列表
+</div>
+
+<h1>📝 暖通知识科普</h1>
+<p>专业暖通知识分享，帮你了解地暖、二联供、三联供、空气能采暖，选对方案不踩坑。</p>
+
+{% for a in articles %}
+<div class="item">
+    <strong><a href="/articles/{{ a.slug }}.html">{{ a.title }}</a></strong>
+    <div class="meta">{{ a.date }} | {{ a.description[:80] }}{% if a.description|length > 80 %}...{% endif %}</div>
+    {% for k in a.get('keywords', [])[:5] %}<span class="keyword">{{ k }}</span>{% endfor %}
+</div>
+{% endfor %}
+
+{% if not articles %}
+<p>暂无文章</p>
+{% endif %}
+{% endblock %}
