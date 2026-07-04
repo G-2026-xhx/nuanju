@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: 暖通查询
+  description: 查询采暖产品服务报价
+  version: "1.0"
+servers:
+  - url: https://g-2026-xhx.github.io/nuanju
+paths:
+  /api/catalog:
+    get:
+      operationId: getCatalog
+      summary: 获取全部产品和服务
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+  /api/products:
+    get:
+      operationId: getProducts
+      summary: 获取产品列表
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
+  /api/services:
+    get:
+      operationId: getServices
+      summary: 获取服务列表
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json: {}
