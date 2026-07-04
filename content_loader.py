@@ -121,6 +121,40 @@ def get_all_categories() -> dict[str, list[str]]:
     }
 
 
+def load_reviews() -> list[dict]:
+    """Load reviews from content/reviews/reviews.json."""
+    import json
+    fpath = CONTENT_DIR / "reviews" / "reviews.json"
+    if not fpath.exists():
+        return []
+    with open(fpath, 'r', encoding='utf-8') as f:
+        reviews = json.load(f)
+    for r in reviews:
+        r.setdefault('slug', r.get('id', ''))
+    return reviews
+
+
+def load_cities() -> list[dict]:
+    """Load city landing pages from content/cities/*.md."""
+    cities = []
+    cities_dir = CONTENT_DIR / "cities"
+    if not cities_dir.exists():
+        return cities
+    for fpath in sorted(cities_dir.glob("*.md")):
+        post = frontmatter.load(fpath)
+        slug = fpath.stem
+        cities.append({
+            "slug": slug,
+            "title": post.metadata.get("title", slug),
+            "city": post.metadata.get("city", slug),
+            "distance": post.metadata.get("distance", ""),
+            "keywords": post.metadata.get("keywords", ""),
+            "description": post.metadata.get("description", ""),
+            "content": post.content,
+        })
+    return cities
+
+
 def reload():
     """Force reload all content (call after file changes)."""
     pass  # Stateless — each call re-reads files

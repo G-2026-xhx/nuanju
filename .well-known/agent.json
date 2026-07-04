@@ -1,7 +1,7 @@
 {
-    "name": "AI数字服务",
-    "description": "面向 AI 时代的技术服务商 — 企业 AI 转型、数据服务、网站建设",
-    "url": "http://localhost:8000",
+    "name": "福泉美佳精工暖通有限公司",
+    "description": "福泉采暖地暖中央空调一站式服务 — 林内壁挂炉 | 纽恩泰空气能 | 地暖铺设 | 中央空调 | 装修设计监理",
+    "url": "https://g-2026-xhx.github.io/nuanju",
     "version": "1.0.0",
     "capabilities": {
         "streaming": false,

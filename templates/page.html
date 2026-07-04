@@ -9,3 +9,9 @@
 {{ content | safe }}
 <p><a href="/">&larr; 回首页</a></p>
 {% endblock %}
+
+{% block extra_schema %}
+{% if schema_org %}
+{{ schema_org | safe }}
+{% endif %}
+{% endblock %}

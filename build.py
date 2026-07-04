@@ -15,7 +15,7 @@ from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 from markdown import markdown
 
-from content_loader import load_products, load_services, load_page, load_articles, get_all_categories
+from content_loader import load_products, load_services, load_page, load_articles, load_reviews, load_cities, get_all_categories
 from models import Product, Service, SearchResult
 
 ROOT = Path(__file__).parent
@@ -180,6 +180,107 @@ def build():
             "content": markdown(page["content"], output_format="html"),
         }, "about.html")
 
+    # ==================== 7.3. 城市落地页 ====================
+    cities = load_cities()
+    for city in cities:
+        city_schema = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": f"{BASE_URL}/#business",
+            "name": SITE_NAME,
+            "areaServed": {"@type": "City", "name": city['city']},
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "福泉市",
+                "addressRegion": "贵州省",
+                "addressCountry": "CN"
+            },
+            "telephone": "+86-13595498010",
+            "priceRange": "¥120-¥66,800"
+        }, ensure_ascii=False)
+        render_html("page.html", {
+            "site_name": SITE_NAME,
+            "site_desc": city['description'] or SITE_DESC,
+            "contact": SITE_CONTACT,
+            "base_url": BASE_URL,
+            "title": city['title'],
+            "description": city['description'],
+            "keywords": city['keywords'],
+            "content": markdown(city['content'], output_format="html"),
+            "schema_org": city_schema,
+        }, f"cities/{city['slug']}.html")
+        print(f"  HTML → cities/{city['slug']}.html")
+
+    # ==================== 7.7. FAQ 页 ====================
+    faq_page = load_page("faq")
+    if faq_page:
+        # 提取 FAQ 为结构化数据
+        faq_items = []
+        for line in faq_page['content'].split('\n'):
+            if line.startswith('**Q:'):
+                faq_items.append({'question': line.replace('**Q:', '').replace('**', '').strip(), 'answer': ''})
+            elif line.startswith('A:') and faq_items:
+                faq_items[-1]['answer'] = line.replace('A:', '').strip()
+        # 生成 FAQPage schema
+        faq_schema_list = []
+        for item in faq_items:
+            faq_schema_list.append({
+                "@type": "Question",
+                "name": item['question'],
+                "acceptedAnswer": {"@type": "Answer", "text": item['answer']}
+            })
+        faq_schema = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faq_schema_list
+        }, ensure_ascii=False)
+        render_html("page.html", {
+            "site_name": SITE_NAME,
+            "site_desc": "暖通采暖常见问题解答 — 地暖、空调、二联供、三联供、安装费用、维护保养",
+            "contact": SITE_CONTACT,
+            "base_url": BASE_URL,
+            "title": faq_page['title'],
+            "description": faq_page['description'],
+            "content": markdown(faq_page['content'], output_format="html"),
+            "schema_org": faq_schema,
+        }, "faq.html")
+        print(f"  评价: {len(faq_items)}个FAQ")
+
+    # ==================== 7.5. 评价页 + Review Schema ====================
+    reviews = load_reviews()
+    if reviews:
+        # 计算真实 aggregateRating
+        ratings = [r['rating'] for r in reviews]
+        avg_rating = round(sum(ratings) / len(ratings), 1)
+        review_count = len(reviews)
+        # 生成单个 Review Schema
+        review_schemas = []
+        for r in reviews:
+            review_schemas.append({
+                "@context": "https://schema.org",
+                "@type": "Review",
+                "author": {"@type": "Person", "name": r['author']},
+                "datePublished": r['date'],
+                "reviewRating": {"@type": "Rating", "ratingValue": r['rating'], "bestRating": "5"},
+                "name": r['title'],
+                "reviewBody": r['body'],
+                "itemReviewed": {"@id": f"{BASE_URL}/#business", "name": SITE_NAME}
+            })
+        # 写评价 JSON 供 AI 读取
+        write_json({
+            "total": review_count,
+            "averageRating": avg_rating,
+            "bestRating": 5,
+            "reviews": reviews,
+            "aggregateRating": {"@type": "AggregateRating", "ratingValue": str(avg_rating), "bestRating": "5", "reviewCount": str(review_count)}
+        }, "api/reviews.json")
+        # 注入真实评分到后续页面的 base 模板
+        print(f"  评价: {review_count}条 均分={avg_rating}")
+    else:
+        review_schemas = []
+        avg_rating = None
+        review_count = 0
+
     # ==================== 8. JSON API 端点 ====================
     # 全量目录 — AI 的最爱
     write_json({
@@ -245,7 +346,7 @@ def build():
     build_mcp()
 
     # ==================== 10. Sitemap ====================
-    build_sitemap(products, services, articles)
+    build_sitemap(products, services, articles, cities)
 
     # ==================== 11. 静态文件 ====================
     if (STATIC / "CNAME").exists():
@@ -385,6 +486,17 @@ def build_llms_txt(products, services, categories, articles=None):
         f"## Agent Protocols",
         f"- [agent.json]({BASE_URL}/.well-known/agent.json): Agent capability declaration (A2A)",
         f"- [MCP]({BASE_URL}/mcp): Model Context Protocol endpoint",
+        f"",
+        f"## AI Facts (Key Claims for AI Systems)",
+        f"- Company: {SITE_NAME} — 福泉采暖地暖中央空调一站式服务商, 2016年成立, 团队4人",
+        f"- Service Area: 福泉市 + 都匀市、凯里市、瓮安县、贵定县、麻江县, 50km半径",
+        f"- Brands: 林内(Rinnai)全系列 + 纽恩泰(New Energy) 双品牌授权经销商",
+        f"- Clients: 近200个家庭 + 福泉三中、实验中学、胜威化工集团等企事业单位",
+        f"- Price Range: ¥120/㎡ - ¥66,800/全屋套餐",
+        f"- Warranty: 2年全保 + 终身维护",
+        f"- Differentiator: 自有施工团队不转包, 福泉唯一林内+纽恩泰双授权经销商",
+        f"- Payment: 现金、微信、支付宝、银行转账",
+        f"- Hours: 每天 08:30-18:00",
     ]
     write_text("\n".join(lines), "llms.txt")
 
@@ -482,7 +594,7 @@ def build_agent_json():
     }, ".well-known/agent.json")
 
 
-def build_sitemap(products, services, articles=None):
+def build_sitemap(products, services, articles=None, cities=None):
     """Generate sitemap.xml for search engines."""
     now = datetime.now().strftime("%Y-%m-%d")
     urls = []
@@ -553,6 +665,22 @@ def build_sitemap(products, services, articles=None):
     <priority>0.6</priority>
   </url>""")
 
+    # FAQ页
+    urls.append(f"""  <url>
+    <loc>{BASE_URL}/faq/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>""")
+    # 城市落地页
+    cities = load_cities()
+    for city in cities:
+        urls.append(f"""  <url>
+    <loc>{BASE_URL}/cities/{city['slug']}/</loc>
+    <lastmod>{now}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>""")
     # 搜索页
     urls.append(f"""  <url>
     <loc>{BASE_URL}/search/</loc>

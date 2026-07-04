@@ -181,13 +181,48 @@
       "sameAs": [
         "https://www.douyin.com/user/福泉市林内供暖设备销售店"
       ],
+      "foundingDate": "2016",
+      "numberOfEmployees": "4",
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "林内(Rinnai)全系列授权经销商 — 壁挂炉、二联供、三联供、热水器、烟机灶具"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "纽恩泰(New Energy)授权经销商 — 空气能热水器、空气能地暖机、二联供"
+        }
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
         "bestRating": "5",
         "reviewCount": "36"
       }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "{{ base_url }}/#owner",
+      "name": "徐华祥",
+      "jobTitle": "总经理",
+      "worksFor": { "@id": "{{ base_url }}/#business" },
+      "knowsAbout": ["暖通工程", "地暖系统设计", "空气能热泵", "中央空调安装", "壁挂炉采暖", "装修监理"],
+      "telephone": "+86-13595498010"
     }
+    {% block breadcrumb_schema %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "首页", "item": "{{ base_url }}/"},
+        {"@type": "ListItem", "position": 2, "name": "{{ self.title() }}", "item": "{{ self.canonical() }}"}
+      ]
+    }
+    </script>
+    {% endblock %}
+    {% block extra_schema %}{% endblock %}
     </script>
     {% endblock %}
 
