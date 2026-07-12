@@ -31,6 +31,8 @@
 - [夏天装暖气最聪明](http://fqnuantong.com/articles/summer-install-heating.html)
 
 ## API & AI
+- [FAQ结构化数据](http://fqnuantong.com/feed/faq.json): 全部FAQ JSON
+- [AI每日更新](http://fqnuantong.com/feed/llms-feed.txt): 每日FAQ和文章，滚动30天
 - [AI每日更新](http://fqnuantong.com/feed/llms-feed.txt): 每日FAQ和文章增量，滚动保留30天
 - [FAQ结构化数据](http://fqnuantong.com/feed/faq.json): 所有FAQ的JSON格式数据
 - [Full Catalog](http://fqnuantong.com/api/catalog.json): 完整产品服务JSON数据
