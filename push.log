@@ -168,3 +168,26 @@ Everything up-to-date
 [2026-08-07 16:07:32]   Gitee clone 失败: fatal: destination path 'C:\Users\徐华祥\ai-site\.gitee_tmp' already exists and is not an empty directory.
 [2026-08-07 16:07:38]   验证警告: HTTP Error 404: Not Found
 [2026-08-07 16:07:38] ===== 运营完成 =====
+[2026-08-08 16:11:48] ===== 暖通每日运营开始  =====
+[2026-08-08 16:11:48] 选题: 07-明装暖气片vs地暖.html
+[2026-08-08 16:11:48] 文章生成: 20260808-ec3f28.html (7651 bytes)
+[2026-08-08 16:11:48] 标题: 明装暖气片和地暖哪个好？福泉家庭真实对比  FAQ: 3 条
+[2026-08-08 16:11:48] 索引文件已更新
+[2026-08-08 16:11:53]   GitHub push 成功
+[2026-08-08 16:11:54]   IndexNow Bing: 200
+[2026-08-08 16:11:55]   IndexNow Yandex: 202
+[2026-08-08 16:11:57]   Gitee push 成功
+[2026-08-08 16:12:05]   验证警告: HTTP Error 404: Not Found
+[2026-08-08 16:12:05] ===== 运营完成 =====
+[2026-08-10 08:01:19] ===== 暖通每日运营开始  =====
+[2026-08-10 08:01:19] 选题: 08-壁挂炉保养指南.html
+[2026-08-10 08:01:19] 文章生成: 20260810-37c6cc.html (8155 bytes)
+[2026-08-10 08:01:19] 标题: 壁挂炉多久保养一次？不保养会怎样？福泉林内用户真实保养指南  FAQ: 3 条
+[2026-08-10 08:01:19] 索引文件已更新
+[2026-08-10 08:01:43]   GitHub push 失败: fatal: unable to access 'https://github.com/G-2026-xhx/nuanju.git/': Recv failure: Connection was reset
+[2026-08-10 08:01:43] GitHub 推送失败, 继续推 Gitee...
+[2026-08-10 08:01:43]   Gitee clone 失败: fatal: destination path 'C:\Users\徐华祥\ai-site\.gitee_tmp' already exists and is not an empty directory.
+[2026-08-10 08:01:50]   验证警告: HTTP Error 404: Not Found
+[2026-08-10 08:01:50] ===== 运营完成 =====
+[2026-08-10 08:01:54] ===== 暖通每日运营开始  =====
+[2026-08-10 08:01:54] 今天已发布 (20260810-37c6cc.html), 跳过
